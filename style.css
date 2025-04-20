@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.open-button {
+    padding: 15px 32px;
+
+    color: white;
+    font-size: 16px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.open-button:hover {
+    background-color: #45a049;
+}
+
+.dialog {
+    position: relative;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 5px;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 5px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+
+    width: 25px;
+    height: 25px;
+
+    background-color: transparent;
+    border: none;
+
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.close-button::before,
+.close-button::after {
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background-color: black;
+}
+.close-button::before {
+    transform: rotate(45deg);
+}
+
+.close-button::after {
+    transform: rotate(-45deg);
+}
+
+.close-button:hover {
+    opacity: 0.5;
+}
