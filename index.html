@@ -7,14 +7,24 @@
     </head>
     <body>
         <div id="dialog-popover">
-            <dialog class="dialog" aria-labelledby="dialog-name" open>
+            <div class="dialog-controls">
+                <button class="open-button" onclick="window.myDialog.show()">
+                    Open Dialog
+                </button>
+                <button
+                    class="open-button"
+                    onclick="window.myDialog.showModal()"
+                >
+                    Open Modal
+                </button>
+            </div>
+            <dialog class="dialog" id="myDialog" aria-labelledby="dialog-name">
                 <div class="dialog-content">
                     <h2 id="dialog-name">Dialog Title</h2>
                     <p>This is a dialog content.</p>
                     <button class="close-button"></button>
                 </div>
             </dialog>
-            <button class="open-button">Open Dialog</button>
         </div>
     </body>
 </html>
