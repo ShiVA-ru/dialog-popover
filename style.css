@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+.dialog,
+.popover {
+    transition:
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out,
+        overlay 0.5s ease-in-out allow-discrete,
+        display 0.5s ease-in-out allow-discrete;
+
+    opacity: 0;
+    transform: translateY(1em);
+}
+
 .dialog {
     position: relative;
 
@@ -13,21 +25,12 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 
-    transition:
-        opacity 0.5s ease-in-out,
-        transform 0.5s ease-in-out,
-        overlay 0.5s ease-in-out allow-discrete,
-        display 0.5s ease-in-out allow-discrete;
-
-    opacity: 0;
-    transform: translateY(1em);
-
     &::backdrop {
         transition:
             display 0.5s allow-discrete,
             overlay 0.5s allow-discrete,
             background-color 0.5s;
-        background-color: hsl(0 0 0 / 0);
+        background-color: hsl(0 0 0 / 50%);
     }
 
     &[open]::backdrop {
@@ -35,19 +38,23 @@
     }
 }
 
-.dialog::backdrop {
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    /* background: -webkit-linear-gradient(90deg, #6fd4d0, #81e595, #ece135); */
+.popover {
+    padding: 20px;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.4);
 }
 
-.dialog[open] {
+.dialog[open],
+.popover:popover-open {
     opacity: 1;
     transform: translateY(0);
 }
 
 @starting-style {
     .dialog[open],
-    .my-popover:popover-open {
+    .popover:popover-open {
         opacity: 0;
         transform: translateY(-1em);
     }
@@ -65,12 +72,12 @@
     border-radius: 5px;
 }
 
-.dialog-controls {
+.controls {
     margin: 20px auto;
     width: fit-content;
 }
 
-.open-button {
+.button {
     padding: 15px 32px;
 
     color: white;
@@ -122,40 +129,4 @@
 
 .close-button:hover {
     opacity: 0.5;
-}
-
-/* Keyframes for dialog and popover elements */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-/* Keyframes for the backdrop pseudo-element */
-@keyframes backdropFadeIn {
-    from {
-        background: hsl(0 0% 0% / 0%);
-    }
-    to {
-        background: hsl(0 0% 0% / 50%);
-    }
-}
-@keyframes backdropFadeOut {
-    from {
-        background: hsl(0 0% 0% / 50%);
-    }
-    to {
-        background: hsl(0 0% 0% / 0%);
-    }
 }

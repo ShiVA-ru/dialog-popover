@@ -7,15 +7,15 @@
     </head>
     <body>
         <div id="dialog-popover">
-            <div class="dialog-controls">
-                <button class="open-button" onclick="window.myDialog.show()">
+            <div class="controls">
+                <button class="button" onclick="window.myDialog.show()">
                     Open Dialog
                 </button>
-                <button
-                    class="open-button"
-                    onclick="window.myDialog.showModal()"
-                >
+                <button class="button" onclick="window.myDialog.showModal()">
                     Open Modal
+                </button>
+                <button class="button" popovertarget="myPopover">
+                    Open Popover
                 </button>
             </div>
             <dialog class="dialog" id="myDialog" aria-labelledby="dialog-name">
@@ -28,6 +28,10 @@
                     ></button>
                 </div>
             </dialog>
+            <div class="popover" id="myPopover" popover>
+                <h2>Popover title</h2>
+                <p>Im simple popover</p>
+            </div>
         </div>
     </body>
 </html>
