@@ -12,11 +12,49 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+
+    transition:
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out,
+        overlay 0.5s ease-in-out allow-discrete,
+        display 0.5s ease-in-out allow-discrete;
+
+    opacity: 0;
+    transform: translateY(1em);
+
+    &::backdrop {
+        transition:
+            display 0.5s allow-discrete,
+            overlay 0.5s allow-discrete,
+            background-color 0.5s;
+        background-color: hsl(0 0 0 / 0);
+    }
+
+    &[open]::backdrop {
+        background-color: hsl(0 0 0 / 50%);
+    }
 }
 
 .dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-    background: -webkit-linear-gradient(90deg, #6fd4d0, #81e595, #ece135);
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* background: -webkit-linear-gradient(90deg, #6fd4d0, #81e595, #ece135); */
+}
+
+.dialog[open] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@starting-style {
+    .dialog[open],
+    .my-popover:popover-open {
+        opacity: 0;
+        transform: translateY(-1em);
+    }
+
+    .dialog[open]::backdrop {
+        background-color: hsl(0 0 0 / 0);
+    }
 }
 
 .dialog-content {
@@ -84,4 +122,40 @@
 
 .close-button:hover {
     opacity: 0.5;
+}
+
+/* Keyframes for dialog and popover elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Keyframes for the backdrop pseudo-element */
+@keyframes backdropFadeIn {
+    from {
+        background: hsl(0 0% 0% / 0%);
+    }
+    to {
+        background: hsl(0 0% 0% / 50%);
+    }
+}
+@keyframes backdropFadeOut {
+    from {
+        background: hsl(0 0% 0% / 50%);
+    }
+    to {
+        background: hsl(0 0% 0% / 0%);
+    }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Dialog Popover</title>
-        <script src="index.js" defer></script>
+        <!-- <script src="index.js" defer></script> -->
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
@@ -22,7 +22,10 @@
                 <div class="dialog-content">
                     <h2 id="dialog-name">Dialog Title</h2>
                     <p>This is a dialog content.</p>
-                    <button class="close-button"></button>
+                    <button
+                        class="close-button"
+                        onclick="window.myDialog.close()"
+                    ></button>
                 </div>
             </dialog>
         </div>
